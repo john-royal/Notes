@@ -31,10 +31,18 @@ struct NotesView: View {
     // MARK: - Persistence
     // Add your code here
     .onAppear {
-      try! viewModel.load()
+      do {
+        try viewModel.load()
+      } catch {
+        fatalError("Cannot load notes: \(error.localizedDescription)")
+      }
     }
     .onChange(of: viewModel.notes) { _ in
-      try! viewModel.save()
+      do {
+        try viewModel.save()
+      } catch {
+        fatalError("Cannot save notes: \(error.localizedDescription)")
+      }
     }
   }
   
