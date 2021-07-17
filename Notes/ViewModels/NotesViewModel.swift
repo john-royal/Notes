@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 class NotesViewModel: ObservableObject {
   @Published var notes: [Note] = []
