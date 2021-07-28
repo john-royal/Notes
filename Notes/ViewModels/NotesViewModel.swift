@@ -24,9 +24,12 @@ class NotesViewModel: ObservableObject {
   // MARK: - Persistence
   // Add your code here
   
+  private var documentDirectory: URL {
+    try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+  }
+  
   private var notesFile: URL {
-    let directory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-    return directory
+    return documentDirectory
       .appendingPathComponent("notes")
       .appendingPathExtension(for: .json)
   }
