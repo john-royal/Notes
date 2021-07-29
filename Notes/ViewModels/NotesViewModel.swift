@@ -29,24 +29,8 @@ class NotesViewModel: ObservableObject {
   // MARK: - Persistence
   // Add your code here
   
-  private var documentDirectory: URL {
-    try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-  }
   
-  private var notesFile: URL {
-    return documentDirectory
-      .appendingPathComponent("notes")
-      .appendingPathExtension(for: .json)
-  }
   
-  func load() throws {
-    guard FileManager.default.isReadableFile(atPath: notesFile.path) else { return }
-    let data = try Data(contentsOf: notesFile)
-    notes = try JSONDecoder().decode([Note].self, from: data)
-  }
   
-  func save() throws {
-    let data = try JSONEncoder().encode(notes)
-    try data.write(to: notesFile)
-  }
+  
 }

@@ -32,12 +32,11 @@ struct NotesView: View {
     }
     // MARK: - Persistence
     // Add your code here
-    .onAppear {
-      try! viewModel.load()
-    }
-    .onChange(of: viewModel.notes) { _ in
-      try! viewModel.save()
-    }
+    
+    
+    
+    
+    
   }
   
   /// Returns the given note as a binding. This is required because the `EditNoteView` requires a binding so that the note can be edited, and the SwiftUI `ForEach` element doesn’t provide a binding.
